@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>F1 Info</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="f1_logo.png" alt="F1 Logo" id="logo">
+            <span>Current Season Info</span>
+        </div>
+
+        <div id="buttonGroup">
+            <button id="teamsBtn">Teams</button>
+            <button id="driversBtn">Drivers</button>
+            <button id="qualyBtn">Latest Qualy Result</button>
+            <button id="raceBtn">Latest Race Result</button>
+            <button id="findRaceBtn">Find Race</button>
+            <button id="placeBetBtn">Place Bet</button>
+            <button id="allBetsBtn">All Bets</button>
+        </div>
+        
+        <div id="formContainer" style="display: none; margin-top: 10px;">
+            <input type="number" id="yearInput" placeholder="Year" />
+            <input type="number" id="roundInput" placeholder="Round" />
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
