@@ -17,3 +17,5 @@ W terminalu, w katalogu projektu, uruchom:
 
 ```bash
 docker-compose up --build
+```
+Frontend stanie na ``localhost:80``
