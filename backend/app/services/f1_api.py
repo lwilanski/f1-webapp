@@ -1,4 +1,5 @@
 import httpx
+from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from app.services.db import db
 
@@ -104,9 +105,14 @@ async def fetch_and_store_latest_qualy():
 async def fetch_and_store_latest_race():
     url = "https://f1api.dev/api/current/last/race"
     async with httpx.AsyncClient() as client:
-        response = await client.get(url)
-        response.raise_for_status()
-        data = response.json()
+        try:
+            response = await client.get(url)
+            if response.status_code == 404:
+                return
+            response.raise_for_status()
+            data = response.json()
+        except (httpx.HTTPStatusError, httpx.RequestError):
+            return
 
     race_data = data["races"]
     race_results = race_data["results"]
