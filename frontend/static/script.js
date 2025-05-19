@@ -95,7 +95,11 @@ document.getElementById("raceBtn").addEventListener("click", async () => {
     const info = data.info;
     const results = data.results;
 
-    results.sort((a, b) => a._id - b._id);
+    results.sort((a, b) => {
+        const posA = a.position === 0 ? Infinity : a.position;
+        const posB = b.position === 0 ? Infinity : b.position;
+        return posA - posB;
+      });
 
     let html = `<h2>${info.raceName}</h2>
                 <p><strong>Date:</strong> ${info.date}</p>
@@ -115,9 +119,9 @@ document.getElementById("raceBtn").addEventListener("click", async () => {
 
     results.forEach(r => {
         let rowStyle = "";
-        if (r._id === 1) rowStyle = 'style="background-color: #FFD700;"';
-        else if (r._id === 2) rowStyle = 'style="background-color: #C0C0C0;"';
-        else if (r._id === 3) rowStyle = 'style="background-color: #CD7F32;"';
+        if (r.position === 1) rowStyle = 'style="background-color: #FFD700;"';
+        else if (r.position === 2) rowStyle = 'style="background-color: #C0C0C0;"';
+        else if (r.position === 3) rowStyle = 'style="background-color: #CD7F32;"';
 
         const isPolePosition = r.grid === 1;
         const driverName = isPolePosition
@@ -125,7 +129,7 @@ document.getElementById("raceBtn").addEventListener("click", async () => {
             : r.driverName;
 
         html += `<tr ${rowStyle}>
-                    <td>${r._id}</td>
+                    <td>${r.position}</td>
                     <td>${driverName}</td>
                     <td>${r.teamName}</td>
                     <td>${r.grid}</td>

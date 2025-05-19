@@ -23,7 +23,7 @@ async def get_latest_race():
     for r in results:
         enriched.append({
             **r,
-            "driverName": drivers_map.get(r["driverId"], r["driverId"]),
+            "driverName": drivers_map.get(r["_id"], r["_id"]),
             "teamName": teams_map.get(r["teamId"], r["teamId"])
         })
 

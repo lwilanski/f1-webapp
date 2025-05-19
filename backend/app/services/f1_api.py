@@ -129,9 +129,9 @@ async def fetch_and_store_latest_race():
 
     parsed_results = [
         {
-            "_id": r["position"],
-            "driverId": r["driver"]["driverId"],
+            "_id": r["driver"]["driverId"],
             "teamId": r["team"]["teamId"],
+            "position": r["position"],
             "grid": r["grid"],
             "time": r["time"],
             "points": r["points"],
